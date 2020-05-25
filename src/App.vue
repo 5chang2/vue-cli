@@ -1,17 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <button @click="statusIndex">Index</button>
+      <button @click="statusLotto">Lotto</button>
+      <button @click="statusLunch">Lunch</button>
+    </div>
+    <Index v-if="status == 'index'"/>
+    <Lunch v-if="status == 'lunch'"/>
+    <Lotto v-if="status == 'lotto'"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Index from './components/Index.vue'
+import Lunch from './components/Lunch.vue'
+import Lotto from './components/Lotto.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Lunch,
+    Lotto,
+    Index,
+  },
+  data: function(){
+    return {
+      status: 'index',
+    }
+  },
+  methods: {
+    statusLunch(){
+      this.status = 'lunch'
+    },
+    statusLotto(){
+      this.status = 'lotto'
+    },
+    statusIndex(){
+      this.status = 'index'
+    }
   }
 }
 </script>
